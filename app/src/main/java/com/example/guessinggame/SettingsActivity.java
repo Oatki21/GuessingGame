@@ -32,7 +32,9 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 MinNumber.setText(String.valueOf(i));
-                System.out.println(i);
+                //System.out.println(i);
+                preferences.edit().putInt("min bar",MinBar.getProgress())
+                        .apply();
             }
 
             @Override
@@ -49,7 +51,9 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 MaxNumber.setText(String.valueOf(i));
-                System.out.println(i);
+                //System.out.println(i);
+                preferences.edit().putInt("max bar",MaxBar.getProgress())
+                        .apply();
             }
 
             @Override
@@ -79,10 +83,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onStop();
         Log.i("Secondary","on stop called");
 
-        preferences.edit().putInt("max bar",MaxBar.getProgress())
-                .apply();
-        preferences.edit().putInt("min bar",MinBar.getProgress())
-                .apply();
+
+
 
     }
 
